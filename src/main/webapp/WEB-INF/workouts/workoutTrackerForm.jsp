@@ -126,6 +126,12 @@
             <form:errors class="text-danger" path="calories" />
         </div>
 
+        <div class="form-group mt-1">
+            <form:label path="date" ></form:label>
+            <form:input class="form-control" type="date" path="date"></form:input>
+            <form:errors class="text-danger" path="date" />
+        </div>
+
         </div>
         <input class="mt-3 mb-3 btn btn-dark btn-md " style="width:375px;" type="submit" value="Post">
         </form:form>

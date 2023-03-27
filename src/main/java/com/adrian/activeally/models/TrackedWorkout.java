@@ -1,6 +1,7 @@
 package com.adrian.activeally.models;
 import java.util.Date;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -40,6 +41,9 @@ public class TrackedWorkout {
 
   private Double time;
 
+  @DateTimeFormat(pattern="yyyy-MM-dd")
+  private Date date;
+
 
   @Column(updatable=false)
   @DateTimeFormat(pattern="yyyy-MM-dd")
@@ -57,17 +61,22 @@ public class TrackedWorkout {
 
 
 
-  public TrackedWorkout(Long id, String exercise, String category, String setsReps, Double calories, Double time, Date createdAt, Date updatedAt, User user) {
+
+
+  public TrackedWorkout(Long id, String exercise, String category, String setsReps, Double calories, Double time, Date date, Date createdAt, Date updatedAt, User user) {
     this.id = id;
     this.exercise = exercise;
     this.category = category;
     this.setsReps = setsReps;
     this.calories = calories;
     this.time = time;
+    this.date = date;
     this.createdAt = createdAt;
     this.updatedAt = updatedAt;
     this.user = user;
   }
+
+  
 
 
 
@@ -151,6 +160,16 @@ public class TrackedWorkout {
   protected void onUpdate(){
       this.updatedAt = new Date();
   }
+
+
+  public Date getDate() {
+    return this.date;
+  }
+
+  public void setDate(Date date) {
+    this.date = date;
+  }
+
 }
 
 

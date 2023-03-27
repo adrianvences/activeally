@@ -77,36 +77,39 @@
     </div>
 
 <!-- table start -->
-<div class="container">
-  <table class="table">
+<div class="container p-3" style="background-color: #1f2041;  ">
+  <table class="table" style="backdrop-filter: blur(2px);">
     <thead>
-        <th>Exercise Type</th>
-        <th>Category</th>
-        <th>Duration Of Exercise</th>
-        <th>Sets/Reps</th>
-        <th>Calories</th>
-        <th>Actions</th>
+        <th class="text-light">Exercise Type</th>
+        <th class="text-light">Category</th>
+        <th class="text-light">Duration Of Exercise</th>
+        <th class="text-light">Sets/Reps</th>
+        <th class="text-light">Calories</th>
+        <th class="text-light">Date Of</th>
+        <th class="text-light">Actions</th>
     </thead>
-    <tbody>
+    <tbody >
         <c:forEach var="trackedWorkout" items="${trackedWorkouts}">
-          <c:choose>
-          <c:when test="${trackedWorkout.user.id == userId}">
+        <c:choose>
+        <c:when test="${trackedWorkout.user.id == userId}">
             <tr>
-                <td>${trackedWorkout.exercise}</td>
-                <td>${trackedWorkout.category}</td>
-                <td>${trackedWorkout.time}</td>
-                <td>${trackedWorkout.setsReps}</td>
-                <td>${trackedWorkout.calories}</td>
+                <td class="text-light">${trackedWorkout.exercise}</td>
+                <td class="text-light">${trackedWorkout.category}</td>
+                <td class="text-light">${trackedWorkout.time}</td>
+                <td class="text-light">${trackedWorkout.setsReps}</td>
+                <td class="text-light">${trackedWorkout.calories}</td>
+                <td class="text-light">${trackedWorkout.date}</td>
                 <td><form action="/workouts/tracked/${trackedWorkout.id}" method="post">
-                  <input type="hidden" name="_method" value="delete">
-                  <input class="btn btn-danger"  type="submit" value="Delete">
-              </form></td>
+                    <a class="btn btn-warning mr-6" href="/classes/edit/${course.id}">Edit</a>
+                    <input type="hidden" name="_method" value="delete">
+                    <input class="btn btn-danger ml-3"  type="submit" value="Delete">
+            </form></td>
             </tr>
-          </c:when>
+        </c:when>
         </c:choose>
         </c:forEach>
     </tbody>
-    <a href="/workouts/tracker/form" class="text-decoration-none" style="color: #301866 ;"><h3>Add Workout +</h3></a>
+    <a href="/workouts/tracker/form" class="btn btn-secondary text-light"  ><h5>Add Workout +</h5></a>
   </table>
 </div>
 
