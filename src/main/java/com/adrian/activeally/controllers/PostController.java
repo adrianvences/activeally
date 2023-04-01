@@ -88,6 +88,29 @@ public class PostController {
     return "redirect:/workouts/tracker";
   }
 
+  //update Tracked // renders
+  @GetMapping("/workouts/tracked/edit/{id}")
+  public String editTrackedWorkout(@PathVariable("id")Long id,Model model){
+    
+    TrackedWorkout trackedWorkout = trackedWorkoutService.getOneTrackedWorkout(id);
+    model.addAttribute("trackedWorkout",trackedWorkout);
+    return "workouts/editTrackedWorkout.jsp";
+  }
+
+  // update handles tracked Workout edit form data
+  @PutMapping("/workouts/tracked/{id}")
+  public String updateTrackedWorkout(
+    @Valid
+    @ModelAttribute("trackedWorkout")TrackedWorkout trackedWorkout,
+    BindingResult result){
+    if(result.hasErrors()){
+      return "workouts/editTrackedWorkout.jsp";
+    } else {
+      trackedWorkoutService.addTrackedWorkout(trackedWorkout);
+    }
+    return "redirect:/workouts/tracker";
+  }
+
 
   //read all
   @GetMapping("/workouts")
@@ -115,17 +138,17 @@ public class PostController {
     
     Workout workout = workoutService.getOne(id);
     model.addAttribute("workout",workout);
-    return "workouts/edit.jsp";
+    return "workouts/editWorkout.jsp";
   }
 
-  // update handles form data
+  // update handles Workout edit form data
   @PutMapping("/workouts/{id}")
   public String update(
     @Valid
     @ModelAttribute("workout")Workout workout,
     BindingResult result){
     if(result.hasErrors()){
-      return "workouts/edit.jsp";
+      return "workouts/editWorkout.jsp";
     } else {
       workoutService.addWorkout(workout);
     }
@@ -146,13 +169,6 @@ public class PostController {
       return "redirect:/workouts/tracker";
   }
 
-
-  // // workout controller
-
-  // @GetMapping("/workouts/tracker")
-  // public String workoutTracker(){
-  //   return "workouts/workoutTracker.jsp";
-  // }
 
 
 

@@ -38,8 +38,10 @@
         </div>
         <!-- this is reg -->
         <div class="row">
-            <h2 class="text-center">Create Workout</h2>
-            <form:form action="/workouts" method="post" modelAttribute="workout">
+            <h2 class="text-center">Edit Workout</h2>
+            <form:form action="/workouts/${workout.id}" method="post" modelAttribute="workout">
+                <!-- have to specify its a put request this way -->
+              <input type="hidden" name="_method" value="put">
               <form:hidden path="user" value="${userId}"></form:hidden>
             <div>
             <div class="form-group mt-1">
@@ -86,6 +88,7 @@
             </div>
             <input class="mt-3 mb-3 btn btn-dark btn-md " style="width:375px;" type="submit" value="Post">
             </form:form>
+            
     
         </div>
         </div>  

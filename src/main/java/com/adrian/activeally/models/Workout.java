@@ -25,32 +25,24 @@ public class Workout {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
+    @NotBlank (message="Enter Post Name")
     private String title;
 
-    @NotBlank
+    @NotBlank(message="Enter Workout Type")
     private String type;
 
-    @NotBlank
+    @NotBlank(message="Enter target muscle group")
     private String targetMuscle;
 
-    @NotBlank
+    @NotBlank(message="Enter equipment used ")
     private String equipment;
 
-    @NotBlank
+    @NotBlank(message="Enter difficulty level")
     private String difficulty;
 
-    @NotBlank
+    @NotBlank(message="Enter intructions")
     private String instructions;
 
-    
-    private Double duration;
-
-    
-    private String date;
-
-
-    private Double calories;
 
 
 
@@ -70,7 +62,9 @@ public class Workout {
     }
 
 
-    public Workout(Long id, String title, String type, String targetMuscle, String equipment, String difficulty, String instructions, Double duration, String date, Double calories, Date createdAt, Date updatedAt, User user) {
+    public Workout(Long id, String title, String type,
+        String targetMuscle, String equipment, String difficulty,
+        String instructions, Date createdAt, Date updatedAt, User user) {
         this.id = id;
         this.title = title;
         this.type = type;
@@ -78,9 +72,6 @@ public class Workout {
         this.equipment = equipment;
         this.difficulty = difficulty;
         this.instructions = instructions;
-        this.duration = duration;
-        this.date = date;
-        this.calories = calories;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.user = user;
@@ -169,34 +160,7 @@ public class Workout {
     public void setUser(User user) {
         this.user = user;
     }
-
-
-    public Double getDuration() {
-        return this.duration;
-    }
-
-    public void setDuration(Double duration) {
-        this.duration = duration;
-    }
-
-    public String getDate() {
-        return this.date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public Double getCalories() {
-        return this.calories;
-    }
-
-    public void setCalories(Double calories) {
-        this.calories = calories;
-    }
     
-
-
     @PrePersist
     protected void onCreate(){
         this.createdAt = new Date();

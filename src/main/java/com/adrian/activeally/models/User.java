@@ -26,8 +26,8 @@ public class User {
     @Size(min=3, max=30, message="Username must be between 3 and 30 characters")
     private String userName;
     
-    @NotEmpty(message="Username is required!")
-    @Size(min=3, max=30, message="Username must be between 3 and 30 characters")
+    @NotEmpty(message="Full name is required!")
+    @Size(min=3, max=30, message="Full name must be between 3 and 30 characters")
     private String fullName;
 
     

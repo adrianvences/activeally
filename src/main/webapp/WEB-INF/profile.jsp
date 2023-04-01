@@ -55,7 +55,7 @@
                                             <a href="/workouts/new" class="nav-link">Create</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="/profile" class="nav-link">Profile</a>
+                                            <a href="/profile/${user.id}" class="nav-link">Profile</a>
                                         </li>
                                         <li class="nav-item">
                                             <a href="/workouts/tracker" class="nav-link">Workout Tracker</a>
@@ -126,10 +126,18 @@
 
                                                 </div>
                                                 <div class="footer rounded d-flex justify-content-around align-content-center d-flex align-items-center "
-                                                    style="background-color: silver ; width: auto; height: 28px; ">
-                                                    <img src="/images/hand-thumbs-up.svg" style="height: 20px ;" alt="">
-                                                    <img src="/images/bookmark-plus.svg" style="height: 20px ;" alt="">
-                                                    <img src="/images/share-fill.svg" style="height: 20px ;" alt="">
+                                                    style="background-color: silver ; width: auto; height: 30px; ">
+                                                    <c:choose>
+                                                    <c:when test="${workout.user.id == userId}">
+                                                        <tr>
+                                                            <td><form action="/workouts/${workout.id}" method="post">
+                                                                <a class="btn btn-warning btn-sm mr-6" href="/workouts/edit/${workout.id}">Edit</a>
+                                                                <input type="hidden" name="_method" value="delete">
+                                                                <input class="btn btn-danger btn-sm ml-3"  type="submit" value="Delete">
+                                                        </form></td>
+                                                        </tr>
+                                                    </c:when>
+                                                    </c:choose>
                                                 </div>
 
                                             </div>

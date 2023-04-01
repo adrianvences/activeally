@@ -70,52 +70,82 @@
 
     <div class="container" style="height: 150px;"></div>
 
-    <div class="container">
+    <div class="container" >
         <h1 class=" text-center ">Fitness Tracker</h1>
 <!--  what do i expect in a tracker -->
 <!-- exercise name , time , date , calories  -->
     </div>
 
-<!-- table start -->
-<div class="container p-3" style="background-color: #1f2041;  ">
-  <table class="table" style="backdrop-filter: blur(2px);">
-    <thead>
-        <th class="text-light">Exercise Type</th>
-        <th class="text-light">Category</th>
-        <th class="text-light">Duration Of Exercise</th>
-        <th class="text-light">Sets/Reps</th>
-        <th class="text-light">Calories</th>
-        <th class="text-light">Date Of</th>
-        <th class="text-light">Actions</th>
-    </thead>
-    <tbody >
-        <c:forEach var="trackedWorkout" items="${trackedWorkouts}">
-        <c:choose>
-        <c:when test="${trackedWorkout.user.id == userId}">
-            <tr>
-                <td class="text-light">${trackedWorkout.exercise}</td>
-                <td class="text-light">${trackedWorkout.category}</td>
-                <td class="text-light">${trackedWorkout.time}</td>
-                <td class="text-light">${trackedWorkout.setsReps}</td>
-                <td class="text-light">${trackedWorkout.calories}</td>
-                <td class="text-light">${trackedWorkout.date}</td>
-                <td><form action="/workouts/tracked/${trackedWorkout.id}" method="post">
-                    <a class="btn btn-warning mr-6" href="/workouts/tracked/edit/${trackedWorkout.id}">Edit</a>
-                    <input type="hidden" name="_method" value="delete">
-                    <input class="btn btn-danger ml-3"  type="submit" value="Delete">
-            </form></td>
-            </tr>
-        </c:when>
-        </c:choose>
-        </c:forEach>
-    </tbody>
-    <a href="/workouts/tracker/form" class="btn btn-secondary text-light"  ><h5>Add Workout +</h5></a>
-  </table>
-</div>
+<!-- form start -->
 
-
-
+    <div class="container">
+        <div class="container" style="height:100px;"></div>
+    <div class="container bg-light border" style="width: 400px ;">
     
+    <div class="container">
+    <img class="align-content-center" style="height: 200px ;" src="images/activeAllyLogoBlack.PNG" alt="">
+    <div class="container">
+
+    </div>
+    </div>
+    <!-- this is reg -->
+    <div class="row">
+        <h2 class="text-center">Edit Track Workout</h2>
+
+        <form:form action="/workouts/tracked/${trackedWorkout.id}" method="post" modelAttribute="trackedWorkout">
+            <!-- have to specify its a put request this way -->
+            <input type="hidden" name="_method" value="put">
+            <form:hidden path="user" value="${userId}"></form:hidden>
+        <div>
+        <div class="form-group mt-1">
+            <form:label path="exercise"></form:label>
+            <form:input class="form-control" placeholder="Exercise Name" path="exercise" />
+            <form:errors class="text-danger"  path="exercise" />
+        </div>
+    
+        <div class="form-group mt-1">
+            <form:label path="category"></form:label>
+            <form:input class="form-control" placeholder="what type of work out? (e.g 'cardio')" path="category"></form:input>
+            <form:errors class="text-danger" path="category" />
+        </div>
+
+        <div class="form-group mt-1">
+            <form:label path="time"></form:label>
+            <form:input class="form-control" placeholder="How long was this workout? (eg: 2:10)" path="time"></form:input>
+            <form:errors class="text-danger" path="time" />
+        </div>
+
+        
+        <div class="form-group mt-1">
+            <form:label path="setsReps"></form:label>
+            <form:input class="form-control" placeholder="How many sets X reps? (e.g '4x10')" path="setsReps"></form:input>
+            <form:errors class="text-danger" path="setsReps" />
+        </div>
+
+        <div class="form-group mt-1">
+            <form:label path="calories"></form:label>
+            <form:input class="form-control" placeholder="how many calories did you burn? " path="calories"></form:input>
+            <form:errors class="text-danger" path="calories" />
+        </div>
+
+        <div class="form-group mt-1">
+            <form:label path="date" ></form:label>
+            <form:input class="form-control" type="date" path="date"></form:input>
+            <form:errors class="text-danger" path="date" />
+        </div>
+
+        </div>
+        <input class="mt-3 mb-3 btn btn-dark btn-md " style="width:375px;" type="submit" value="Post">
+        </form:form>
+
+        </div>
+        </div>  
+    
+    <div class="container bg-light border mt-3 d-flex align-items-center justify-content-center " style="width: 400px ; height: 75px;">
+        <h6 class="text-center"> Go <a href="/workouts/tracker"> Back</a></h6>
+    </div>
+    </div>
+    </div>
 
 
     <footer class="p-5  text-white text-center position-relative mt-3">

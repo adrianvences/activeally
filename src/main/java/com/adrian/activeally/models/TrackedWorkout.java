@@ -1,6 +1,6 @@
 package com.adrian.activeally.models;
+import java.time.LocalDateTime;
 import java.util.Date;
-
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,6 +16,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 // what will a tracked work out take?
 // exercise / catagory / sets-reps / calories / time on exercise
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -27,13 +28,13 @@ public class TrackedWorkout {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
   
-  @NotBlank
+  @NotBlank(message="Enter Exercise name")
   private String exercise;
   
-  @NotBlank
+  @NotBlank(message="Enter Category")
   private String category;
 
-  @NotBlank
+  @NotBlank (message="Enter Number of sets and reps")
   private String setsReps;
 
   
@@ -42,6 +43,7 @@ public class TrackedWorkout {
   private Double time;
 
   @DateTimeFormat(pattern="yyyy-MM-dd")
+  @NotNull (message="Enter Date Of Exercise")
   private Date date;
 
 
@@ -63,7 +65,7 @@ public class TrackedWorkout {
 
 
 
-  public TrackedWorkout(Long id, String exercise, String category, String setsReps, Double calories, Double time, Date date, Date createdAt, Date updatedAt, User user) {
+  public TrackedWorkout(Long id, String exercise, String category, String setsReps, Double calories, Double time, LocalDateTime date, Date createdAt, Date updatedAt, User user) {
     this.id = id;
     this.exercise = exercise;
     this.category = category;
@@ -162,6 +164,7 @@ public class TrackedWorkout {
   }
 
 
+
   public Date getDate() {
     return this.date;
   }
@@ -169,6 +172,7 @@ public class TrackedWorkout {
   public void setDate(Date date) {
     this.date = date;
   }
+
 
 }
 
