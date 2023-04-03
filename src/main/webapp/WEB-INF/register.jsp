@@ -70,6 +70,12 @@
                 <form:input class="form-control" placeholder="Email" path="email" />
                 <form:errors  path="email" />
             </div>
+            
+            <div class="form-group mt-1">
+                <form:label path="url"></form:label>
+                <form:input class="form-control" placeholder="Profile Picture URL" path="url" />
+                <form:errors  path="url" />
+            </div>
                 
             <div>
                 <form:label path="password"></form:label>

@@ -74,9 +74,13 @@
                             <div class="card padding-3">
                                 <div class="card-header  d-flex bg-dark" >
                                     <!-- <div class="container  d-flex justify-content-center " style="width: 40% ;"><img class="align-content-center mt-3 mb-3" style="height:100px;" src="/images/user-circle.png" alt="Profile picture"></div> -->
-                                    <div class="d-flex justify-content-center " style="width: 40% ;"> <img
+                                    <!-- <div class="d-flex justify-content-center " style="width: 40% ;"> <img
                                             class="align-content-center mt-3 mb-3 gap-3 m-1 rounded-circle" style="height:100px;"
                                             src="https://randomuser.me/api/portraits/men/72.jpg" alt="Profile picture">
+                                    </div> -->
+                                    <div class="d-flex justify-content-center " style="width: 40% ;"> <img
+                                            class="align-content-center mt-3 mb-3 gap-3 m-1 rounded-circle" style="height:100px;"
+                                            src="${workout.user.url}" alt="Profile picture">
                                     </div>
                                     <div class="p-3 d-flex">
                                         <!-- <h1>${user.fullName}</h1> -->
@@ -104,7 +108,7 @@
                                                         <!-- <img class="align-content-center mt-3 mb-3 gap-3 m-1" style="height:50px;" src="/images/user-circle.png" alt="Profile picture">  -->
                                                         <img class="align-content-center mt-3 mb-3 gap-3 m-1 rounded-circle"
                                                             style="height:50px;"
-                                                            src="https://randomuser.me/api/portraits/men/72.jpg"
+                                                            src="${workout.user.url}"
                                                             alt="Profile picture">
                                                         <a href="/profile/${workout.user.id}"
                                                             class="text-decoration-none text-muted">

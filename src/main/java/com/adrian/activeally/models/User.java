@@ -13,6 +13,8 @@ import javax.persistence.Transient;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.URL;
     
 @Entity
 @Table(name="users")
@@ -30,13 +32,12 @@ public class User {
     @Size(min=3, max=30, message="Full name must be between 3 and 30 characters")
     private String fullName;
 
-    
-    
-
     @NotEmpty(message="Email is required!")
     @Email(message="Please enter a valid email!")
     private String email;
     
+    private String url;
+
     @NotEmpty(message="Password is required!")
     @Size(min=8, max=128, message="Password must be between 8 and 128 characters")
     private String password;
@@ -53,13 +54,18 @@ public class User {
     public User() {}
 
 
-  public User(Long id, String userName, String email, String password, String confirm) {
+
+  public User(Long id, String userName, String fullName, String email, String url, String password, String confirm, List<Workout> workouts) {
     this.id = id;
     this.userName = userName;
+    this.fullName = fullName;
     this.email = email;
+    this.url = url;
     this.password = password;
     this.confirm = confirm;
+    this.workouts = workouts;
   }
+
 
     
     // TODO - Don't forget to generate getters and setters
@@ -122,5 +128,14 @@ public class User {
   public void setWorkouts(List<Workout> workouts) {
     this.workouts = workouts;
   }
+
+  public String getUrl() {
+    return this.url;
+  }
+
+  public void setUrl(String url) {
+    this.url = url;
+  }
+
 }
     

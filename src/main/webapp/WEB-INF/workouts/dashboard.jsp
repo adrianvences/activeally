@@ -86,7 +86,8 @@
                 <div class="card-body rounded justify-content-center bg-dark" >
                     <div class="card-header border-light ">
                         <!-- <img class="align-content-center mt-3 mb-3 gap-3 m-1" style="height:50px;" src="/images/user-circle.png" alt="Profile picture">  -->
-                        <img class="align-content-center mt-3 mb-3 gap-3 m-1 rounded-circle" style="height:50px;" src="https://randomuser.me/api/portraits/men/72.jpg" alt="Profile picture"> 
+                        <!-- <img class="align-content-center mt-3 mb-3 gap-3 m-1 rounded-circle" style="height:50px;" src="https://randomuser.me/api/portraits/men/72.jpg" alt="Profile picture">  -->
+                        <img class="align-content-center mt-3 mb-3 gap-3 m-1 rounded-circle" style="height:50px;" src="${workout.user.url}" alt="Profile picture"> 
                         <a href="/profile/${workout.user.id}" class="text-decoration-none text-muted">    @${workout.user.userName}</a>
     
                     </div>
