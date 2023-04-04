@@ -65,7 +65,7 @@ public class TrackedWorkout {
 
 
 
-  public TrackedWorkout(Long id, String exercise, String category, String setsReps, Double calories, Double time, LocalDateTime date, Date createdAt, Date updatedAt, User user) {
+  public TrackedWorkout(Long id, String exercise, String category, String setsReps, Double calories, Double time, Date date, Date createdAt, Date updatedAt, User user) {
     this.id = id;
     this.exercise = exercise;
     this.category = category;
